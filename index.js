@@ -14,11 +14,10 @@ app.use("/api", productRoute);
 
 mongoose
   .connect(
-    "mongodb+srv://admin:admin1234@backenddb.tekfe.mongodb.net/Node-API?retryWrites=true&w=majority&appName=BackendDB"
+    "yourMongoDB connection link here"
   )
-  // admin <- user
-  // admin 1234 <- passwords
-  // Node-API <- collection name
+ 
+
   .then(() => {
     console.log("Connected to the database!");
     app.listen(3000, () => {
