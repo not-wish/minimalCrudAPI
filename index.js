@@ -4,6 +4,9 @@ const productRoute = require("./routes/product.routes.js"); // import the route(
 
 const app = express();
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 //middleware
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: false }));
@@ -14,12 +17,12 @@ app.use("/api", productRoute);
 // MongoDB connection
 mongoose
   .connect(
-    "yourMongoDB connection link here"
+    process.env.MONGODB_URI
   )
   .then(() => {
     console.log("Connected to the database!");
-    app.listen(3000, () => {
-      console.log("Sever is running on port 3000");
+    app.listen(process.env.PORT || 3000, () => {
+      console.log(`Sever is running on port ${process.env.PORT || 3000}`);
     });
   })
   .catch(() => {
